@@ -197,10 +197,6 @@ public class StateBackendLoader {
 
 		// (1) the application defined state backend has precedence
 		if (fromApplication != null) {
-			if (logger != null) {
-				logger.info("Using application-defined state backend: {}", fromApplication);
-			}
-
 			// see if this is supposed to pick up additional configuration parameters
 			if (fromApplication instanceof ConfigurableStateBackend) {
 				// needs to pick up configuration
@@ -213,6 +209,10 @@ public class StateBackendLoader {
 			else {
 				// keep as is!
 				backend = fromApplication;
+			}
+
+			if (logger != null) {
+				logger.info("Using application-defined state backend: {}", fromApplication);
 			}
 		}
 		else {
