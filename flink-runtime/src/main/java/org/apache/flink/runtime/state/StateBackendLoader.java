@@ -201,7 +201,7 @@ public class StateBackendLoader {
 			if (fromApplication instanceof ConfigurableStateBackend) {
 				// needs to pick up configuration
 				if (logger != null) {
-					logger.info("Configuring application-defined state backend with job/cluster config");
+					logger.info("Using job/cluster config to configure application-defined state backend: {}", fromApplication);
 				}
 
 				backend = ((ConfigurableStateBackend) fromApplication).configure(config, classLoader);
@@ -212,7 +212,7 @@ public class StateBackendLoader {
 			}
 
 			if (logger != null) {
-				logger.info("Using application-defined state backend: {}", fromApplication);
+				logger.info("Using application-defined state backend: {}", backend);
 			}
 		}
 		else {
